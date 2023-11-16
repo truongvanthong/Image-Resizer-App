@@ -41,8 +41,13 @@ st.title("Image Resizer App")
 
 # Sidebar for input and output folders
 st.sidebar.header("Settings")
-input_folder = st.sidebar.text_input("Input Folder Path", r'path\to\input\folder')
-output_folder = st.sidebar.text_input("Output Folder Path", r'path\to\output\folder')
+
+# Get the directory of the current script
+current_script_directory = os.path.dirname(__file__)
+
+# Combine with relative paths for input and output folders
+input_folder = st.sidebar.text_input("Input Folder Path", os.path.join(current_script_directory, "path/to/input/folder"))
+output_folder = st.sidebar.text_input("Output Folder Path", os.path.join(current_script_directory, "path/to/output/folder"))
 
 # Slider for selecting image size
 new_width = st.sidebar.slider("Select Width for Resized Images", 100, 2000, 1024)
